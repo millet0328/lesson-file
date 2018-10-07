@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="500" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var oCanvas = document.getElementById("canvas");
+			var context = oCanvas.getContext("2d");
+
+			//获取当前时间
+			(function getTime() {
+				var now = new Date();
+				var sec = now.getSeconds();
+				var min = now.getMinutes() + sec / 60;
+				var hour = now.getHours() + min / 60;
+
+				//清空画布
+				context.clearRect(0, 0, oCanvas.width, oCanvas.height);
+
+				//绘制矩形背景
+				context.fillStyle = "#EEEEEE";
+				context.fillRect(0, 0, oCanvas.width, oCanvas.height);
+
+				//绘制表盘
+				context.beginPath();
+				context.lineWidth = 4;
+				context.arc(250, 250, 200, 0, 2 * Math.PI);
+				context.stroke();
+				context.closePath();
+
+				//储存context状态
+				context.save();
+				//绘制小时刻度
+				context.translate(250, 250);
+				for(var i = 0; i < 12; i++) {
+					//旋转画布
+					context.rotate(Math.PI / 6);
+					//划线
+					context.beginPath();
+					context.moveTo(0, -195);
+					context.lineTo(0, -175);
+					context.lineWidth = 5;
+					context.stroke();
+					context.closePath();
+				}
+				//恢复context状态
+				context.restore();
+
+				//绘制分钟刻度
+				context.save();
+				context.translate(250, 250);
+				for(var i = 0; i < 60; i++) {
+					//旋转画布
+					context.rotate(Math.PI / 30);
+					//划线
+					context.beginPath();
+					context.moveTo(0, -195);
+					context.lineTo(0, -185);
+					context.lineWidth = 3;
+					context.stroke();
+					context.closePath();
+				}
+				//恢复context状态
+				context.restore();
+
+				//绘制时针
+				context.save();
+				context.translate(250, 250);
+				context.beginPath();
+				context.rotate(Math.PI / 6 * hour);
+				context.moveTo(0, -145);
+				context.lineTo(0, 20);
+				context.lineWidth = 5;
+				context.stroke();
+				context.closePath();
+
+				//恢复context状态
+				context.restore();
+
+				//绘制分针
+				//储存context状态
+				context.save();
+				context.translate(250, 250);
+				context.beginPath();
+				context.rotate(Math.PI / 30 * min);
+				context.moveTo(0, -155);
+				context.lineTo(0, 25);
+				context.lineWidth = 3;
+				context.stroke();
+				context.closePath();
+
+				//恢复context状态
+				context.restore();
+
+				//绘制秒针
+				//储存context状态
+				context.save();
+				context.translate(250, 250);
+				context.beginPath();
+				context.rotate(Math.PI / 30 * sec);
+				context.moveTo(0, -165);
+				context.lineTo(0, 30);
+				context.strokeStyle = "red";
+				context.lineWidth = 2;
+				context.stroke();
+				context.closePath();
+
+				context.beginPath();
+				context.arc(0, 0, 5, 0, 2 * Math.PI);
+				context.lineWidth = 3;
+				context.stroke();
+				context.fillStyle = "#FFFFFF";
+				context.fill();
+				context.closePath();
+
+				context.beginPath();
+				context.arc(0, -120, 5, 0, 2 * Math.PI);
+				context.lineWidth = 3;
+				context.stroke();
+				context.fillStyle = "#FFFFFF";
+				context.fill();
+				context.closePath();
+				//恢复context状态
+				context.restore();
+
+				window.requestAnimationFrame(getTime);
+			})();
+			
+
+		}
+	</script>
+
+</html>

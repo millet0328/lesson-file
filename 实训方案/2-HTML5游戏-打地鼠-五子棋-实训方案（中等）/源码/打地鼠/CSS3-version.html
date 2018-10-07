@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.clearfix::after {
+				clear: both;
+				display: table;
+				content: "";
+			}
+			
+			.game-box ul {
+				width: 312px;
+				margin: 50px auto;
+				list-style: none;
+				padding: 0;
+			}
+			
+			.game-box li {
+				float: left;
+				font-size: 0;
+				margin: 2px;
+				width: 100px;
+				height: 100px;
+				position: relative;
+				transform-style: preserve-3d;
+				-webkit-transition: all 0.3s ease-in-out;
+				-moz-transition: all 0.3s ease-in-out;
+				-ms-transition: all 0.3s ease-in-out;
+				-o-transition: all 0.3s ease-in-out;
+				transition: all 0.3s ease-in-out;
+			}
+			
+			.game-box li::before {
+				background: url(img/5.jpg) no-repeat center;
+				transform: translate3d(0, 0, 1px);
+			}
+			
+			.game-box li::after {
+				background: url(img/2.png) no-repeat center;
+				transform: translate3d(0, 0, -1px);
+			}
+			
+			.game-box li::before,
+			.game-box li::after {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background-size: 100px 100px;
+			}
+			
+			.game-box li.active {
+				transform: rotateY(180deg);
+			}
+			
+			.score {
+				text-align: center;
+				background-color: #000;
+				color: #FFF;
+				padding: 6px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="game-box">
+			<ul class="clearfix">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<!--总得分-->
+			<div class="score">
+				SCORE:
+				<span>0</span>
+			</div>
+		</div>
+
+		<script src="js/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//item
+				var $item = $(".game-box li");
+				//得分数
+				var score = 0;
+				//记录当前地鼠位置，防止同一位置重复生成
+				var num = 9;
+				//定时器
+				var timer;
+				//随机冒出地鼠
+				timer = setInterval(function() {
+					randomMouse();
+				}, 1000);
+				//随机地鼠
+				function randomMouse() {
+					$item.removeClass("active");
+					var x = randomPosition();
+					$item.eq(x).addClass("active");
+				}
+				//随机生成位置
+				function randomPosition() {
+					//0~8随机选取一个数
+					var x = Math.random() * 8;
+					//四舍五入
+					x = Math.round(x);
+					//比较当前地鼠位置，防止同一位置重复生成
+					if(x == num) {
+						x = randomPosition();
+					}
+					num = x;
+					return x;
+				}
+				//打地鼠
+				$item.click(function() {
+					var flag = $(this).hasClass("active");
+					if(flag) {
+						score += 1;
+						$(".score span").text(score);
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

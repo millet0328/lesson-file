@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>五子棋</title>
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			canvas {
+				background: url(img/bg.jpg);
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="1024" height="670"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			//
+			var oCanvas = document.getElementById("canvas");
+			var context = oCanvas.getContext("2d");
+
+			//标题
+			context.fillStyle = "#000";
+			context.font = "bold 40px 微软雅黑";
+			context.fillText("Canvas五子棋", 330, 50);
+			//再来一局
+			context.beginPath();
+			context.strokeStyle = "#000000";
+			context.lineWidth = 2;
+			context.strokeRect(800, 180, 106, 34);
+			context.font = "24px 微软雅黑"
+			context.fillText("再来一局", 804, 205);
+			context.closePath();
+			//游戏规则
+			context.font = "18px 微软雅黑"
+			context.fillText("游戏规则：玩家1执黑色", 800, 240);
+			context.fillText("棋子先走，玩家2执白色棋子", 764, 260);
+			context.fillText("后手，任何一方形成五子连", 764, 280);
+			context.fillText("珠，游戏终止。", 764, 300);
+			//下一步棋
+			context.font = "bold 24px 微软雅黑";
+			context.fillText("下一步：", 55, 200);
+
+			//画棋盘
+			for(var i = 0; i < 15; i++) {
+				context.beginPath();
+				context.moveTo(180, 80 + 40 * i);
+				context.lineTo(740, 80 + 40 * i);
+				context.lineWidth = 2;
+				context.stroke();
+				context.closePath();
+			}
+			for(var i = 0; i < 15; i++) {
+				context.beginPath();
+				context.moveTo(180 + 40 * i, 80);
+				context.lineTo(180 + 40 * i, 640);
+				context.lineWidth = 2;
+				context.stroke();
+				context.closePath();
+			}
+			//定义变量
+			var color = "black";
+			var arr = new Array(15);
+			for(var i = 0; i < arr.length; i++) {
+				arr[i] = new Array(15);
+				for(var j = 0; j < arr[i].length; j++) {
+					arr[i][j] = 0;
+				}
+			}
+			//输赢状态
+			var win = false;
+			//颜色转换
+			var player = "黑棋";
+			//第一步的提示语
+			stepTips(color);
+			//鼠标事件
+			oCanvas.onclick = function(event) {
+				var x = event.clientX - 160;
+				var y = event.clientY - 60;
+				var cx = parseInt(x / 40);
+				var cy = parseInt(y / 40);
+				//再来一局
+				if(x >= 640 && x <= 746 && y >= 120 && y <= 154) {
+					window.location.reload();
+				}
+				//限定范围
+				if(x < 0 || cx > 14 || y < 0 || cy > 14 || arr[cx][cy] != 0) {
+					return;
+				}
+				//输赢状态
+				if(win) {
+					return;
+				} else {
+					drawChess(color, cx, cy);
+				}
+				isWin(color, cx, cy);
+				if(color == "black") {
+					color = "white";
+					player = "白棋";
+				} else {
+					color = "black";
+					player = "黑棋";
+				}
+				//提示谁走下一步
+				stepTips(color);
+			};
+			//提示谁走下一步
+			function stepTips(color) {
+				context.beginPath();
+				context.clearRect(77, 225, 30, 30);
+				context.fillStyle = color;
+				context.arc(92, 240, 15, 0, 2 * Math.PI);
+				context.fill();
+				context.closePath();
+			}
+
+			//画棋子
+			function drawChess(color, x, y) {
+				context.beginPath();
+				context.fillStyle = color;
+				context.arc(180 + 40 * x, 80 + 40 * y, 15, 0, 2 * Math.PI);
+				context.fill();
+				context.closePath();
+				if(color == "black") {
+					arr[x][y] = 1;
+				} else {
+					arr[x][y] = 2;
+				}
+			}
+			//判断棋子五连珠
+			function isWin(color, x, y) {
+				//换算颜色对应的数值
+				var num = 1;
+				if(color == "black") {
+					num = 1
+				} else {
+					num = 2
+				}
+				judgeLR(num, x, y);
+				judgeTB(num, x, y);
+				judgeLB(num, x, y);
+				judgeRB(num, x, y);
+			}
+
+			function judgeLR(num, x, y) {
+				var obj = {
+					startX: 0,
+					startY: 0,
+					endX: 0,
+					endY: 0
+				}
+				var count = 0;
+				//右边
+				for(var i = x; i < 15; i++) {
+					if(arr[i][y] == num) {
+						obj.endX = i;
+						obj.endY = y;
+						count++;
+					} else {
+						break;
+					}
+				}
+				//左边
+				for(var i = x; i >= 0; i--) {
+					if(arr[i][y] == num) {
+						obj.startX = i;
+						obj.startY = y;
+						count++;
+					} else {
+						break;
+					}
+				}
+				count--;
+				if(count >= 5) {
+					success(obj.startX, obj.startY, obj.endX, obj.endY);
+				}
+			}
+
+			function judgeTB(num, x, y) {
+				var obj = {
+					startX: 0,
+					startY: 0,
+					endX: 0,
+					endY: 0
+				}
+				var count = 0;
+				//下边
+				for(var i = y; i < 15; i++) {
+					if(arr[x][i] == num) {
+						obj.endX = x;
+						obj.endY = i;
+						count++;
+					} else {
+						break;
+					}
+				}
+				//上边
+				for(var i = y; i >= 0; i--) {
+					if(arr[x][i] == num) {
+						obj.startX = x;
+						obj.startY = i;
+						count++;
+					} else {
+						break;
+					}
+				}
+				count--;
+				if(count >= 5) {
+					success(obj.startX, obj.startY, obj.endX, obj.endY);
+				}
+			}
+			//左上-右下
+			function judgeLB(num, x, y) {
+				var obj = {
+					startX: 0,
+					startY: 0,
+					endX: 0,
+					endY: 0
+				}
+				var count = 0;
+				//右下边
+				for(var i = x, j = y; i < 15 && j < 15; i++, j++) {
+					if(arr[i][j] == num) {
+						obj.endX = i;
+						obj.endY = j;
+						count++;
+					} else {
+						break;
+					}
+				}
+				//左上边
+				for(var i = x, j = y; i >= 0 && j >= 0; i--, j--) {
+					if(arr[i][j] == num) {
+						obj.startX = i;
+						obj.startY = j;
+						count++;
+					} else {
+						break;
+					}
+				}
+				count--;
+				if(count >= 5) {
+					success(obj.startX, obj.startY, obj.endX, obj.endY);
+				}
+			}
+			//右上-左下
+			function judgeRB(num, x, y) {
+				var obj = {
+					startX: 0,
+					startY: 0,
+					endX: 0,
+					endY: 0
+				}
+				var count = 0;
+				//左下边
+				for(var i = x, j = y; i >= 0 && j < 15; i--, j++) {
+					if(arr[i][j] == num) {
+						obj.endX = i;
+						obj.endY = j;
+						count++;
+					} else {
+						break;
+					}
+				}
+				//右上边
+				for(var i = x, j = y; i < 15 && j >= 0; i++, j--) {
+					if(arr[i][j] == num) {
+						obj.startX = i;
+						obj.startY = j;
+						count++;
+					} else {
+						break;
+					}
+				}
+				count--;
+				if(count >= 5) {
+					success(obj.startX, obj.startY, obj.endX, obj.endY);
+				}
+			}
+			//成功划线
+			function success(sx, sy, ex, ey) {
+				win = true;
+				context.beginPath();
+				context.moveTo(180 + 40 * sx, 80 + 40 * sy);
+				context.lineTo(180 + 40 * ex, 80 + 40 * ey);
+				context.strokeStyle = "rgba(255,0,0,0.7)";
+				context.lineWidth = 6;
+				context.lineCap = "round";
+				context.stroke();
+				context.closePath();
+				//提示语
+				context.fillStyle = "blue";
+				context.font = "bold 24px 微软雅黑";
+				context.fillText(player + "赢了", 800, 350);
+			}
+		}
+	</script>
+
+</html>

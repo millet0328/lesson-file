@@ -1,0 +1,147 @@
+@charset "utf-8";
+
+/*公共类*/
+
+.trans3 {
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.trans5 {
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+.cube_box {
+	/*定义视角位置*/
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	-ms-perspective: 1000px;
+	perspective: 1000px;
+	/*animation: perserve-in 5s ease-in-out;*/
+	/*定义子元素有3D变换*/
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.circle {}
+
+.rotate_box {
+	/*相对定位-参照物*/
+	position: relative;
+	/*定义子元素有3D变换*/
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	/*水平居中显示*/
+	width: 100px;
+	height: 485px;
+	margin: 100px auto;
+	transform: rotateX(-33.5deg) rotateY(45deg);
+	/*定义旋转的中心点*/
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
+	-ms-transform-origin: 50% 50%;
+	-o-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+	/*自定义动画*/
+	animation: turnRound 10s linear infinite;
+}
+
+.rotate_box .surface {
+	/*绝对定位*/
+	position: absolute;
+	/*透明度*/
+	opacity: 0.8;
+	width: 100px;
+	height: 100px;
+}
+
+.cube_box .surface1 {
+	background-color: #0066EE;
+	-webkit-transform: rotateY(0deg) translateZ(50px);
+	-moz-transform: rotateY(0deg) translateZ(50px);
+	-ms-transform: rotateY(0deg) translateZ(50px);
+	-o-transform: rotateY(0deg) translateZ(50px);
+	transform: rotateY(0deg) translateZ(50px);
+}
+
+.cube_box .surface2 {
+	background-color: #CC0001;
+	-webkit-transform: rotateY(90deg) translateZ(50px);
+	-moz-transform: rotateY(90deg) translateZ(50px);
+	-ms-transform: rotateY(90deg) translateZ(50px);
+	-o-transform: rotateY(90deg) translateZ(50px);
+	transform: rotateY(90deg) translateZ(50px);
+}
+
+.cube_box .surface3 {
+	background-color: #C67E12;
+	-webkit-transform: rotateY(180deg) translateZ(50px);
+	-moz-transform: rotateY(180deg) translateZ(50px);
+	-ms-transform: rotateY(180deg) translateZ(50px);
+	-o-transform: rotateY(180deg) translateZ(50px);
+	transform: rotateY(180deg) translateZ(50px);
+}
+
+.cube_box .surface4 {
+	background-color: #000000;
+	-webkit-transform: rotateY(270deg) translateZ(50px);
+	-moz-transform: rotateY(270deg) translateZ(50px);
+	-ms-transform: rotateY(270deg) translateZ(50px);
+	-o-transform: rotateY(270deg) translateZ(50px);
+	transform: rotateY(270deg) translateZ(50px);
+}
+
+.cube_box .surface5 {
+	background-color: #ff0302;
+	-webkit-transform: rotateX(90deg) translateZ(50px);
+	-moz-transform: rotateX(90deg) translateZ(50px);
+	-ms-transform: rotateX(90deg) translateZ(50px);
+	-o-transform: rotateX(90deg) translateZ(50px);
+	transform: rotateX(90deg) translateZ(50px);
+}
+
+.cube_box .surface6 {
+	background-color: green;
+	-webkit-transform: rotateX(270deg) translateZ(50px);
+	-moz-transform: rotateX(270deg) translateZ(50px);
+	-ms-transform: rotateX(270deg) translateZ(50px);
+	-o-transform: rotateX(270deg) translateZ(50px);
+	transform: rotateX(270deg) translateZ(50px);
+}
+
+@keyframes turnRound {
+	0% {
+		-webkit-transform: rotateX(-45deg) rotateY(45deg);
+		transform: rotateX(-45deg) rotateY(45deg)
+	}
+	100% {
+		-webkit-transform: rotateX(-33.5deg) rotateY(-315deg);
+		transform: rotateX(-33.5deg) rotateY(-315deg)
+	}
+}
+
+@keyframes perserve-in {
+	from {
+		-webkit-perspective: 1;
+		-moz-perspective: 1;
+		-ms-perspective: 1;
+		perspective: 1;
+	}
+	to {
+		-webkit-perspective: 5000;
+		-moz-perspective: 5000;
+		-ms-perspective: 5000;
+		perspective: 5000;
+	}
+}

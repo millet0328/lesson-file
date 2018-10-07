@@ -1,0 +1,293 @@
+@charset "utf-8";
+html,
+body {
+    color: #898989;
+    background: #000000;
+    font-family: "Microsoft YaHei UI", "Microsoft YaHei UI Light", "微软雅黑", "宋体", Helvetica-Black-SemiBold, Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+
+/*公共类*/
+
+.trans3 {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.trans5 {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+
+/*整体的照片体系*/
+
+.photo_box {
+    /*视角*/
+    -webkit-perspective: 10000px;
+    -moz-perspective: 10000px;
+    -ms-perspective: 10000px;
+    perspective: 10000px;
+    /*自定义动画*/
+    animation: perserve-in 2s ease-in-out;
+}
+
+
+/*多变题里面的平面*/
+
+.rotate_box {
+    /*相对定位*/
+    position: relative;
+    /*使用3d之前的申明定义子元素具有3d变换*/
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    /*定义旋转的中心点*/
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    /*照片体放在屏幕中间水平居中显示*/
+    width: 300px;
+    height: 300px;
+    margin: 100px auto;
+    /*自定义动画，需要延迟2秒*/
+    animation: turnRound 10s linear 2s infinite running;
+}
+
+.rotate_box .img {
+    /*絕對定位，其參照物為relative的父級*/
+    position: absolute;
+    /*規定照片的透明度*/
+    opacity: 0.9;
+}
+
+.photo_box .rotate_box:hover {
+    animation-play-state: paused;
+}
+
+.rotate_box:hover .img1 {
+    -webkit-transform: rotateY(0deg) translateZ(700px);
+    -moz-transform: rotateY(0deg) translateZ(700px);
+    -ms-transform: rotateY(0deg) translateZ(700px);
+    -o-transform: rotateY(0deg) translateZ(700px);
+    transform: rotateY(0deg) translateZ(700px);
+}
+.rotate_box:hover .img2 {
+    -webkit-transform: rotateY(30deg) translateZ(700px);
+    -moz-transform: rotateY(30deg) translateZ(700px);
+    -ms-transform: rotateY(30deg) translateZ(700px);
+    -o-transform: rotateY(30deg) translateZ(700px);
+    transform: rotateY(30deg) translateZ(700px);
+}
+.rotate_box:hover .img3 {
+    -webkit-transform: rotateY(60deg) translateZ(700px);
+    -moz-transform: rotateY(60deg) translateZ(700px);
+    -ms-transform: rotateY(60deg) translateZ(700px);
+    -o-transform: rotateY(60deg) translateZ(700px);
+    transform: rotateY(60deg) translateZ(700px);
+}
+.rotate_box:hover .img4 {
+    -webkit-transform: rotateY(90deg) translateZ(700px);
+    -moz-transform: rotateY(90deg) translateZ(700px);
+    -ms-transform: rotateY(90deg) translateZ(700px);
+    -o-transform: rotateY(90deg) translateZ(700px);
+    transform: rotateY(90deg) translateZ(700px);
+}
+.rotate_box:hover .img5 {
+    -webkit-transform: rotateY(120deg) translateZ(700px);
+    -moz-transform: rotateY(120deg) translateZ(700px);
+    -ms-transform: rotateY(120deg) translateZ(700px);
+    -o-transform: rotateY(120deg) translateZ(700px);
+    transform: rotateY(120deg) translateZ(700px);
+}
+.rotate_box:hover .img6 {
+    -webkit-transform: rotateY(150deg) translateZ(700px);
+    -moz-transform: rotateY(150deg) translateZ(700px);
+    -ms-transform: rotateY(150deg) translateZ(700px);
+    -o-transform: rotateY(150deg) translateZ(700px);
+    transform: rotateY(150deg) translateZ(700px);
+}
+.rotate_box:hover .img7 {
+    -webkit-transform: rotateY(180deg) translateZ(700px);
+    -moz-transform: rotateY(180deg) translateZ(700px);
+    -ms-transform: rotateY(180deg) translateZ(700px);
+    -o-transform: rotateY(180deg) translateZ(700px);
+    transform: rotateY(180deg) translateZ(700px);
+}
+.rotate_box:hover .img8 {
+    -webkit-transform: rotateY(210deg) translateZ(700px);
+    -moz-transform: rotateY(210deg) translateZ(700px);
+    -ms-transform: rotateY(210deg) translateZ(700px);
+    -o-transform: rotateY(210deg) translateZ(700px);
+    transform: rotateY(210deg) translateZ(700px);
+}
+.rotate_box:hover .img9 {
+    -webkit-transform: rotateY(240deg) translateZ(700px);
+    -moz-transform: rotateY(240deg) translateZ(700px);
+    -ms-transform: rotateY(240deg) translateZ(700px);
+    -o-transform: rotateY(240deg) translateZ(700px);
+    transform: rotateY(240deg) translateZ(700px);
+}
+.rotate_box:hover .img10 {
+    -webkit-transform: rotateY(270deg) translateZ(700px);
+    -moz-transform: rotateY(270deg) translateZ(700px);
+    -ms-transform: rotateY(270deg) translateZ(700px);
+    -o-transform: rotateY(270deg) translateZ(700px);
+    transform: rotateY(270deg) translateZ(700px);
+}
+.rotate_box:hover .img11 {
+    -webkit-transform: rotateY(300deg) translateZ(700px);
+    -moz-transform: rotateY(300deg) translateZ(700px);
+    -ms-transform: rotateY(300deg) translateZ(700px);
+    -o-transform: rotateY(300deg) translateZ(700px);
+    transform: rotateY(300deg) translateZ(700px);
+}
+.rotate_box:hover .img12 {
+    -webkit-transform: rotateY(330deg) translateZ(700px);
+    -moz-transform: rotateY(330deg) translateZ(700px);
+    -ms-transform: rotateY(330deg) translateZ(700px);
+    -o-transform: rotateY(330deg) translateZ(700px);
+    transform: rotateY(330deg) translateZ(700px);
+}
+.photo_box .img1 {
+    -webkit-transform: rotateY(0deg) translateZ(600px);
+    -moz-transform: rotateY(0deg) translateZ(600px);
+    -ms-transform: rotateY(0deg) translateZ(600px);
+    -o-transform: rotateY(0deg) translateZ(600px);
+    transform: rotateY(0deg) translateZ(600px);
+}
+
+.photo_box .img2 {
+    /*600*/
+    -webkit-transform: rotateY(30deg) translateZ(600px);
+    -moz-transform: rotateY(30deg) translateZ(600px);
+    -ms-transform: rotateY(30deg) translateZ(600px);
+    -o-transform: rotateY(30deg) translateZ(600px);
+    transform: rotateY(30deg) translateZ(600px);
+}
+
+.photo_box .img3 {
+    -webkit-transform: rotateY(60deg) translateZ(600px);
+    -moz-transform: rotateY(60deg) translateZ(600px);
+    -ms-transform: rotateY(60deg) translateZ(600px);
+    -o-transform: rotateY(60deg) translateZ(600px);
+    transform: rotateY(60deg) translateZ(600px);
+}
+
+.photo_box .img4 {
+    -webkit-transform: rotateY(90deg) translateZ(600px);
+    -moz-transform: rotateY(90deg) translateZ(600px);
+    -ms-transform: rotateY(90deg) translateZ(600px);
+    -o-transform: rotateY(90deg) translateZ(600px);
+    transform: rotateY(90deg) translateZ(600px);
+}
+
+.photo_box .img5 {
+    -webkit-transform: rotateY(120deg) translateZ(600px);
+    -moz-transform: rotateY(120deg) translateZ(600px);
+    -ms-transform: rotateY(120deg) translateZ(600px);
+    -o-transform: rotateY(120deg) translateZ(600px);
+    transform: rotateY(120deg) translateZ(600px);
+}
+
+.photo_box .img6 {
+    -webkit-transform: rotateY(150deg) translateZ(600px);
+    -moz-transform: rotateY(150deg) translateZ(600px);
+    -ms-transform: rotateY(150deg) translateZ(600px);
+    -o-transform: rotateY(150deg) translateZ(600px);
+    transform: rotateY(150deg) translateZ(600px);
+}
+
+.photo_box .img7 {
+    -webkit-transform: rotateY(180deg) translateZ(600px);
+    -moz-transform: rotateY(180deg) translateZ(600px);
+    -ms-transform: rotateY(180deg) translateZ(600px);
+    -o-transform: rotateY(180deg) translateZ(600px);
+    transform: rotateY(180deg) translateZ(600px);
+}
+
+.photo_box .img8 {
+    -webkit-transform: rotateY(210deg) translateZ(600px);
+    -moz-transform: rotateY(210deg) translateZ(600px);
+    -ms-transform: rotateY(210deg) translateZ(600px);
+    -o-transform: rotateY(210deg) translateZ(600px);
+    transform: rotateY(210deg) translateZ(600px);
+}
+
+.photo_box .img9 {
+    -webkit-transform: rotateY(240deg) translateZ(600px);
+    -moz-transform: rotateY(240deg) translateZ(600px);
+    -ms-transform: rotateY(240deg) translateZ(600px);
+    -o-transform: rotateY(240deg) translateZ(600px);
+    transform: rotateY(240deg) translateZ(600px);
+}
+
+.photo_box .img10 {
+    -webkit-transform: rotateY(270deg) translateZ(600px);
+    -moz-transform: rotateY(270deg) translateZ(600px);
+    -ms-transform: rotateY(270deg) translateZ(600px);
+    -o-transform: rotateY(270deg) translateZ(600px);
+    transform: rotateY(270deg) translateZ(600px);
+}
+
+.photo_box .img11 {
+    -webkit-transform: rotateY(300deg) translateZ(600px);
+    -moz-transform: rotateY(300deg) translateZ(600px);
+    -ms-transform: rotateY(300deg) translateZ(600px);
+    -o-transform: rotateY(300deg) translateZ(600px);
+    transform: rotateY(300deg) translateZ(600px);
+}
+
+.photo_box .img12 {
+    -webkit-transform: rotateY(330deg) translateZ(600px);
+    -moz-transform: rotateY(330deg) translateZ(600px);
+    -ms-transform: rotateY(330deg) translateZ(600px);
+    -o-transform: rotateY(330deg) translateZ(600px);
+    transform: rotateY(330deg) translateZ(600px);
+}
+
+
+/*运动轨迹*/
+
+@-webkit-keyframes turnRound {
+    from {
+        -webkit-transform: rotateY(0deg);
+        -moz-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    to {
+        -webkit-transform: rotateY(360deg);
+        -moz-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        -o-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes perserve-in {
+    from {
+        -webkit-perspective: 1;
+        -moz-perspective: 1;
+        -ms-perspective: 1;
+        perspective: 1;
+    }
+    to {
+        -webkit-perspective: 5000;
+        -moz-perspective: 5000;
+        -ms-perspective: 5000;
+        perspective: 5000;
+    }
+}

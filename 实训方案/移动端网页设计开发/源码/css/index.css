@@ -1,0 +1,203 @@
+@charset "utf-8";
+.main {
+	display: flex;
+	color: white;
+	height: 100vh;
+	font-size: 14px;
+}
+
+.left {
+	width: 240px;
+}
+
+.center {
+	flex: 1;
+	overflow: hidden;
+}
+
+.right {
+	width: 240px;
+}
+
+.bg-light-black {
+	background-color: #262626;
+}
+
+.tran {
+	transition: all 0.5s;
+}
+
+.relative {
+	position: relative;
+}
+
+
+/*用户*/
+
+.user {
+	text-align: center;
+	padding: 16px 0 50px 0;
+}
+
+.user .avatar {
+	border-radius: 50%;
+}
+
+.user .name {
+	line-height: 24px;
+}
+
+
+/*导航*/
+
+.nav>li {
+	color: white;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 14px 12px 14px 0;
+	border-left: 3px solid #262626;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+
+.nav>li.active {
+	border-left: 3px solid #d22f2f;
+	background-color: #1c1c1c;
+}
+
+.nav .icon {
+	padding: 0 20px 0 24px;
+}
+
+.nav span {
+	flex: 1;
+}
+
+.nav .playlists {
+	border-left: 0;
+	transition: all 0.5s;
+}
+
+.playlists.open {
+	background-color: #1c1c1c;
+}
+
+.playlists.open .arrow {
+	transform: rotate(180deg);
+}
+
+.subMenu {
+	width: 100%;
+	display: none;
+}
+
+.subMenu ul {
+	padding-left: 45px;
+}
+
+.subMenu ul li {
+	color: #525252;
+	padding-top: 24px;
+	display: flex;
+	align-items: center;
+}
+
+.subMenu ul li::before {
+	content: '';
+	display: inline-block;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background-color: #525252;
+	margin-right: 16px;
+}
+
+.subMenu ul li a {
+	color: white;
+}
+
+.manage-menu {
+	padding: 24px 0 10px 41px;
+}
+
+.manage-menu img {
+	margin-right: 12px;
+}
+
+
+/*搜索条*/
+
+.search-box {
+	display: flex;
+	justify-content: center;
+	padding-top: 8px;
+}
+
+.search-bar {
+	width: 70%;
+}
+
+.search-bar input {
+	width: 100%;
+	border: 0;
+	background-color: #1f1f1f;
+	outline: 0;
+	padding: 18px 36px 18px 60px;
+	color: white;
+	box-sizing: border-box;
+}
+
+.search-bar .icon-search {
+	position: absolute;
+	left: 15px;
+	top: 17px;
+}
+
+.search-bar .icon-voice {
+	position: absolute;
+	right: 15px;
+	top: 17px;
+}
+
+
+/*选项卡*/
+
+.tab .tab-title {
+	display: flex;
+	justify-content: center;
+}
+
+.tab-title li {
+	width: 112px;
+	color: #969696;
+	border-bottom: 2px solid #262626;
+	text-align: center;
+	padding: 25px 0 19px 0;
+}
+
+.tab-title li.active {
+	border-bottom: 2px solid #d32f2f;
+	color: white;
+	background-color: #232323;
+}
+
+.tab-content {
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+}
+
+.tab-content li {
+	width: 100%;
+	height: 84vh;
+	overflow: auto;
+	position: absolute;
+	background-color: #1a1a1a;
+	transform: translateX(100%);
+	transition: all 0.5s;
+}
+
+.tab-content li.active {
+	transform: translateX(0);
+}
