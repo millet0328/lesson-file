@@ -403,6 +403,7 @@ a {
 	padding: 10px;
 	margin: 20px 0px 0px 50px;
 	color: #898989;
+	position: relative;
 }
 
 .own-details::before {
