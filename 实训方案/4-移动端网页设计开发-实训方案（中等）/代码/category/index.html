@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+	<body>
+		<div class="tab">
+			<div class="tab-title">
+				<div class="item active">
+					女士
+				</div>
+				<div class="item">
+					男士
+				</div>
+				<div class="item">
+					婴童
+				</div>
+				<div class="item">
+					居家
+				</div>
+				<div class="item">
+					配饰
+				</div>
+				<div class="item">
+					餐厨
+				</div>
+				<div class="item">
+					饮食
+				</div>
+				<div class="item">
+					杂货
+				</div>
+			</div>
+			<div class="tab-content">
+				<div class="content">女士</div>
+				<div class="content">男士</div>
+				<div class="content">婴童</div>
+				<div class="content">居家</div>
+				<div class="content">配饰</div>
+				<div class="content">餐厨</div>
+				<div class="content">饮食</div>
+				<div class="content">杂货</div>
+			</div>
+		</div>
+		<!-- jQuery -->
+		<script src="../asset/lib/jQuery/jquery-3.3.1.min.js"></script>
+		<script>
+			$(".tab-title .item").click(function() {
+				// 获取下标index
+				var index = $(this).index();
+				// 添加active,唯一
+				$(".tab-title .item").removeClass("active");
+				$(this).addClass("active");
+				// 显示对应的content
+				$(".tab-content .content").hide(200).eq(index).show(400);
+			});
+		</script>
+	</body>
+</html>

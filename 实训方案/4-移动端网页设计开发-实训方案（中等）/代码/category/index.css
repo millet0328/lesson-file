@@ -1,0 +1,39 @@
+.tab {
+	display: flex;
+	width: 100vw;
+}
+
+.tab-title {
+	padding-top: 4.53vw;
+	width: 22vw;
+	box-sizing: border-box;
+	border-right: 1px solid #cecece;
+}
+
+.tab-title .item {
+	font-size: 3.47vw;
+	color: #555555;
+	border-left: 0.8vw solid white;
+	padding-left: 6.67vw;
+	margin-bottom: 5.6vw;
+	line-height: 6.67vw;
+	transition: all 0.5s;
+}
+
+.tab-title .item.active {
+	border-left: 0.8vw solid #C55A5C;
+	color: #C55A5C;
+}
+
+.tab-content {
+	width: 78vw;
+}
+
+.tab-content .content {
+	min-height: 100vh;
+	display: none;
+}
+
+.tab-content .content:first-child {
+	display: block;
+}
