@@ -6,14 +6,8 @@ a {
 	padding-bottom: 17.53vw;
 }
 
-html,
 body {
-	width: 100vw;
-	height: 100vh;
-	margin: 0;
 	overflow-x: hidden;
-	box-sizing: border-box;
-	background-color: #f4f4f4;
 }
 
 body.open {
